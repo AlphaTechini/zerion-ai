@@ -13,16 +13,21 @@
     "cli/commands/",
     "cli/utils/",
     "cli/policies/",
+    "cli/db/",
     "skills/",
     "plugins/",
     ".agents/",
     ".claude-plugin/",
     ".codex-plugin/",
     "gemini-extension.json",
+    "drizzle.config.ts",
     "README.md",
     "LICENSE"
   ],
   "scripts": {
+    "db:generate": "drizzle-kit generate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
     "test": "node --test 'cli/tests/unit/**/*.test.mjs'",
     "test:unit": "node --test 'cli/tests/unit/**/*.test.mjs'",
     "test:integration": "node --test --test-concurrency=1 'cli/tests/integration/**/*.test.mjs'",
@@ -59,15 +64,20 @@
     "@x402/evm": "^2.6.0",
     "@x402/fetch": "^2.6.0",
     "@x402/svm": "^2.8.0",
+    "drizzle-orm": "0.45.2",
     "mppx": "^0.6.2",
     "qrcode-terminal": "^0.12.0",
     "viem": "^2.0.0"
+  },
+  "devDependencies": {
+    "drizzle-kit": "0.31.10"
   },
   "overrides": {
     "uuid": "^14.0.0"
   },
   "pnpm": {
     "overrides": {
+      "esbuild": "0.28.0",
       "uuid": "^14.0.0"
     }
   }

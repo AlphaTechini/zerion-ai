@@ -25,3 +25,11 @@ Do not hardcode API keys, private keys, agent tokens, or wallet secrets.
 Use Zerion's documented agent token and policy flow for real transactions. Treat agent tokens like credentials with spending power.
 
 Before relying on specific CLI flags or output shape, verify the installed CLI behavior because Zerion CLI is marked Alpha Preview.
+
+## Database Decisions
+
+IntentGuard uses PostgreSQL with Drizzle. The schema lives in `cli/db/schema/`, Drizzle config lives in `drizzle.config.ts`, and generated SQL migrations live in `drizzle/`.
+
+Wallet identity is split from wallet accounts because Zerion/OWS wallets can expose multiple chain accounts. Agent-token tables must store metadata only, never raw token secrets.
+
+IntentGuard policies are the primary safety model. Zerion/OWS policies remain a secondary execution guardrail.
